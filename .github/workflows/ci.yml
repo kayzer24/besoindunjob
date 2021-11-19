@@ -33,6 +33,6 @@ jobs:
             - name: Run PHP Code Sniffer
               run: php vendor/bin/phpcs
             - name: Run Acceptance Tests
-              run: php vendor/bin/behat --config behat.yaml
+              run: php vendor/bin/behat --config behat.yml.dist
             - name: Run Tests
               run: php vendor/bin/simple-phpunit --testsuite unit,integration
