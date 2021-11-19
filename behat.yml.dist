@@ -1,0 +1,29 @@
+default:
+    suites:
+        default:
+            contexts:
+                - App\Tests\Behat\AcceptApplicationContext
+                - App\Tests\Behat\CloseApplicationContext
+                - App\Tests\Behat\DeleteOfferContext
+                - App\Tests\Behat\DemoContext
+                - App\Tests\Behat\HireContext
+                - App\Tests\Behat\MatchContext
+                - App\Tests\Behat\PublishOfferContext
+                - App\Tests\Behat\RefuseApplicationContext
+                - App\Tests\Behat\RegisterContext
+                - App\Tests\Behat\SendApplicationContext
+                - App\Tests\Behat\ShowInterestContext
+                - App\Tests\Behat\UpdateResumeContext
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/bootstrap.php
+            kernel:
+                class: App\Kernel
+                environment: test
+                debug: ~
+#        Behatch\Extension: ~
+#        Behat\MinkExtension:
+#            sessions:
+#                default:
+#                    symfony: ~
