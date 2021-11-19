@@ -2,18 +2,18 @@ default:
     suites:
         default:
             contexts:
-                - App\Tests\Behat\AcceptApplicationContext
-                - App\Tests\Behat\CloseApplicationContext
-                - App\Tests\Behat\DeleteOfferContext
                 - App\Tests\Behat\DemoContext
-                - App\Tests\Behat\HireContext
-                - App\Tests\Behat\MatchContext
-                - App\Tests\Behat\PublishOfferContext
-                - App\Tests\Behat\RefuseApplicationContext
-                - App\Tests\Behat\RegisterContext
-                - App\Tests\Behat\SendApplicationContext
-                - App\Tests\Behat\ShowInterestContext
-                - App\Tests\Behat\UpdateResumeContext
+                - App\Features\AcceptApplicationContext
+                - App\Features\CloseApplicationContext
+                - App\Features\DeleteOfferContext
+                - App\Features\HireContext
+                - App\Features\MatchContext
+                - App\Features\PublishOfferContext
+                - App\Features\RefuseApplicationContext
+                - App\Features\RegisterContext
+                - App\Features\SendApplicationContext
+                - App\Features\ShowInterestContext
+                - App\Features\UpdateResumeContext
 
     extensions:
         FriendsOfBehat\SymfonyExtension:

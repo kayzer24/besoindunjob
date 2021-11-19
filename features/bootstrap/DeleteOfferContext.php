@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Behat;
+namespace App\Features;
 
 use Behat\Behat\Context\Context;
 
