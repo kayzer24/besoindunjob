@@ -44,7 +44,14 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "behat/behat": "^3.10",
+        "behatch/contexts": "^3.3",
+        "dama/doctrine-test-bundle": "^6.7",
+        "friends-of-behat/mink-browserkit-driver": "^1.5",
+        "friends-of-behat/mink-extension": "^2.5",
+        "friends-of-behat/symfony-extension": "^2.1",
         "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.6",
         "symfony/browser-kit": "5.3.*",
         "symfony/css-selector": "5.3.*",
         "symfony/debug-bundle": "5.3.*",
@@ -67,7 +74,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/",
+            "App\\Features\\": "features/bootstrap"
         }
     },
     "replace": {
