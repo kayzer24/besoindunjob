@@ -11,7 +11,6 @@ class ShowInterestContext implements Context
      */
     public function iWantToShowInterestForAJobSeeker()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ class ShowInterestContext implements Context
      */
     public function iSendMyInterestToTheJobSeeker()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ class ShowInterestContext implements Context
      */
     public function theJobSeekerIsAwareOfOutInterest()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }

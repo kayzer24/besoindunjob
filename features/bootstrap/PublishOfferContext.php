@@ -11,7 +11,6 @@ class PublishOfferContext implements Context
      */
     public function iWantToPublishAnOffer()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ class PublishOfferContext implements Context
      */
     public function iWriteTheOffer()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ class PublishOfferContext implements Context
      */
     public function theOfferIsPublishedAndTheJobSeekerCanSendTheirApplicationForANewJob()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }

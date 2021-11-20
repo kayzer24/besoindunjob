@@ -10,7 +10,8 @@ default:
                 - App\Features\MatchContext
                 - App\Features\PublishOfferContext
                 - App\Features\RefuseApplicationContext
-                - App\Features\RegisterContext
+                - App\Features\RegisterJobSeekerContext
+                - App\Features\RegisterRecruiterContext
                 - App\Features\SendApplicationContext
                 - App\Features\ShowInterestContext
                 - App\Features\UpdateResumeContext

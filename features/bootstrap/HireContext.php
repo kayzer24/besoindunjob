@@ -11,7 +11,6 @@ final class HireContext implements Context
      */
     public function iWantToHireAJobSeekerSoThatSuppliedForOurJobOffer(): void
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ final class HireContext implements Context
      */
     public function iHireHim(): void
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ final class HireContext implements Context
      */
     public function theJobIsArchived(): void
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }
