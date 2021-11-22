@@ -8,7 +8,6 @@ use App\UseCase\RegisterJobSeeker;
 use Assert\LazyAssertionException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Class RegisterJobSeekerTest

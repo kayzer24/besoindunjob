@@ -3,8 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\JobSeeker;
+use App\Entity\Offer;
 use App\Entity\Recruiter;
-use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -39,6 +39,8 @@ class UserFixtures extends Fixture
 
         $manager->persist($jobSeeker);
 
+        $manager->flush();
+
         $recruiter = (new Recruiter())
             ->setFirstName("Jane")
             ->setLastName("Carbon")
@@ -47,7 +49,22 @@ class UserFixtures extends Fixture
 
         $recruiter->setPassword($this->userPasswordHasher->hashPassword($recruiter, "Password123!"));
 
+        $offer = (new Offer())
+            ->setName("name")
+            ->setCompanyDescription("company descriprion")
+            ->setJobDescription("job descriprion")
+            ->setMinSalary(32000)
+            ->setMaxSalary(38000)
+            ->setMissions("missions")
+            ->setProfile("profile")
+            ->setRemote(true)
+            ->setSoftSkills("soft skills")
+            ->setTasks("tasks")
+            ->setRecruiter($recruiter)
+        ;
+
         $manager->persist($recruiter);
+        $manager->persist($offer);
 
         $manager->flush();
     }

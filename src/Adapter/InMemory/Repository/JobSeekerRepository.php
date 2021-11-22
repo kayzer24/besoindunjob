@@ -15,4 +15,9 @@ class JobSeekerRepository extends UserRepository implements JobSeekerGateway
     {
         // TODO: Implement register() method.
     }
+
+    public function findOneById(int $id): JobSeeker
+    {
+        return $this->users[$id];
+    }
 }
