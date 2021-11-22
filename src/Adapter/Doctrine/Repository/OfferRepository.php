@@ -18,6 +18,11 @@ class OfferRepository extends ServiceEntityRepository implements OfferGateway
         parent::__construct($registry, Offer::class);
     }
 
+    public function findOneById(int $id): Offer
+    {
+        return parent::find(["id" => $id]);
+    }
+
     public function publish(Offer $offer): void
     {
         $this->_em->persist($offer);

@@ -28,6 +28,11 @@ class UserRepository implements UserGateway
             ->setLastName("Doe")
             ->setEmail("job.seeker@email.com");
 
+        $reflexionClass = new \ReflectionClass($jobSeeker);
+        $reflexionProperty = $reflexionClass->getProperty("id");
+        $reflexionProperty->setAccessible(true);
+        $reflexionProperty->setValue($jobSeeker, 1);
+
         $jobSeeker->setPassword($userPasswordHasher->hashPassword($jobSeeker, "Password123!"));
 
         $recruiter = (new Recruiter())
@@ -40,6 +45,7 @@ class UserRepository implements UserGateway
 
         $this->users = [
             "job.seeker@email.com" => $jobSeeker,
+            1 => $jobSeeker,
             "recruiter@email.com" => $recruiter
         ];
     }

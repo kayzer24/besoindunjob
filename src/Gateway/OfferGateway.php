@@ -11,4 +11,10 @@ use App\Entity\Offer;
 interface OfferGateway
 {
     public function publish(Offer $offer): void;
+
+    /**
+     * @param int $id
+     * @return Offer
+     */
+    public function findOneById(int $id): Offer;
 }
