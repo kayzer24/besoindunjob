@@ -45,7 +45,7 @@ class RegisterRecruiterTest extends TestCase
 
         $this->expectException(LazyAssertionException::class);
 
-        $useCase->execute($recruiter);
+        $this->assertEquals($recruiter, $useCase->execute($recruiter));
     }
 
     public function provideBadRecruiter(): \Generator

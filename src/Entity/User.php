@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -14,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\DiscriminatorColumn(name="disc", type="string")
  * @ORM\DiscriminatorMap({"job_seeker"="App\Entity\JobSeeker", "recruiter"="App\Entity\Recruiter"})
  */
-abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
+abstract class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable, EquatableInterface
 {
     /**
      * @var int|null
@@ -183,6 +184,27 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getUsername(): string
     {
-        return (string) $this->email();
+        return (string) $this->email;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function serialize()
+    {
+        return serialize([$this->email]);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function unserialize($serialized)
+    {
+        list($this->email) = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    public function isEqualTo(UserInterface $user)
+    {
+        return $user->getUserIdentifier() === $this->getUsername();
     }
 }
