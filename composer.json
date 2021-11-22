@@ -46,12 +46,8 @@
     },
     "require-dev": {
         "behat/behat": "^3.10",
-        "behatch/contexts": "^3.3",
         "dama/doctrine-test-bundle": "^6.7",
-        "friends-of-behat/mink-browserkit-driver": "^1.5",
-        "friends-of-behat/mink-extension": "^2.5",
-        "friends-of-behat/symfony-extension": "^2.1",
-        "phpunit/phpunit": "^9.5",
+        "friends-of-behat/symfony-extension": "^2.2",
         "squizlabs/php_codesniffer": "^3.6",
         "symfony/browser-kit": "5.3.*",
         "symfony/css-selector": "5.3.*",
@@ -85,6 +81,11 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
+        "prepare-system": [
+            "symfony php bin/console d:d:d --if-exists -f --env=system",
+            "symfony php bin/console d:d:c --env=system",
+            "symfony php bin/console d:s:u -f --env=system"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"

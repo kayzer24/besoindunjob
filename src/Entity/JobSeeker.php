@@ -11,4 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class JobSeeker extends User
 {
+    public function getRoles()
+    {
+        return ["ROLE_USER", "ROLE_JOB_SEEKER"];
+    }
 }

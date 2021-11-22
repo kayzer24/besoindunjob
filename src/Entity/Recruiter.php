@@ -34,4 +34,9 @@ class Recruiter extends User
         $this->companyName = $companyName;
         return $this;
     }
+
+    public function getRoles()
+    {
+        return ["ROLE_USER", "ROLE_RECRUITER"];
+    }
 }

@@ -1,6 +1,2 @@
 imports:
     - { resource: services_prod.yaml }
-
-services:
-    App\Gateway\JobSeekerGateway: '@App\Adapter\Doctrine\Repository\JobSeekerRepository'
-    App\Gateway\RecruiterGateway: '@App\Adapter\Doctrine\Repository\RecruiterRepository'

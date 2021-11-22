@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Adapter\Doctrine\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class User
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="disc", type="string")
  * @ORM\DiscriminatorMap({"job_seeker"="App\Entity\JobSeeker", "recruiter"="App\Entity\Recruiter"})
  */
-abstract class User
+abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @var int|null
@@ -164,5 +165,24 @@ abstract class User
     public function getRegisteredAt()
     {
         return $this->registeredAt;
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    public function getUsername(): string
+    {
+        return (string) $this->email();
     }
 }

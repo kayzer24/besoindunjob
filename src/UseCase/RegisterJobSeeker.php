@@ -5,6 +5,7 @@ namespace App\UseCase;
 use App\Entity\JobSeeker;
 use App\Gateway\JobSeekerGateway;
 use Assert\Assert;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Class RegisterJobSeeker
@@ -18,12 +19,21 @@ class RegisterJobSeeker
     private JobSeekerGateway $jobSeekerGateway;
 
     /**
+     * @var UserPasswordHasherInterface
+     */
+    private UserPasswordHasherInterface $userPasswordHasher;
+
+    /**
      * RegisterJobSeeker constructor.
      * @param JobSeekerGateway $jobSeekerGateway
+     * @param UserPasswordHasherInterface $userPasswordHasher
      */
-    public function __construct(JobSeekerGateway $jobSeekerGateway)
-    {
+    public function __construct(
+        JobSeekerGateway $jobSeekerGateway,
+        UserPasswordHasherInterface $userPasswordHasher
+    ) {
         $this->jobSeekerGateway = $jobSeekerGateway;
+        $this->userPasswordHasher = $userPasswordHasher;
     }
 
     /**
@@ -45,6 +55,10 @@ class RegisterJobSeeker
                 ->email()
             ->verifyNow()
             ;
+
+        $jobSeeker->setPassword(
+            $this->userPasswordHasher->hashPassword($jobSeeker, $jobSeeker->getPlainPassword())
+        );
 
         $this->jobSeekerGateway->register($jobSeeker);
 

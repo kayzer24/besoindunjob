@@ -9,7 +9,7 @@ use App\Gateway\RecruiterGateway;
  * Class RecruiterRepository
  * @package App\Adapter\InMemory\Repository
  */
-class RecruiterRepository implements RecruiterGateway
+class RecruiterRepository extends UserRepository implements RecruiterGateway
 {
     public function register(Recruiter $recruiter): void
     {

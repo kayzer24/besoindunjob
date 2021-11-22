@@ -5,6 +5,7 @@ namespace App\UseCase;
 use App\Entity\Recruiter;
 use App\Gateway\RecruiterGateway;
 use Assert\Assert;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Class RegisterRecruiter
@@ -16,14 +17,22 @@ class RegisterRecruiter
      * @var RecruiterGateway
      */
     private RecruiterGateway $recruiterGateway;
+    /**
+     * @var UserPasswordHasherInterface
+     */
+    private UserPasswordHasherInterface $userPasswordHasher;
 
     /**
      * RegisterRecruiter constructor.
      * @param RecruiterGateway $recruiterGateway
+     * @param UserPasswordHasherInterface $userPasswordHasher
      */
-    public function __construct(RecruiterGateway $recruiterGateway)
-    {
+    public function __construct(
+        RecruiterGateway $recruiterGateway,
+        UserPasswordHasherInterface $userPasswordHasher
+    ) {
         $this->recruiterGateway = $recruiterGateway;
+        $this->userPasswordHasher = $userPasswordHasher;
     }
 
     /**
@@ -46,6 +55,10 @@ class RegisterRecruiter
                 ->email()
             ->verifyNow()
             ;
+
+        $recruiter->setPassword(
+            $this->userPasswordHasher->hashPassword($recruiter, $recruiter->getPlainPassword())
+        );
 
         $this->recruiterGateway->register($recruiter);
 

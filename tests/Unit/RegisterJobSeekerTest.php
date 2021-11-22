@@ -7,6 +7,8 @@ use App\Entity\JobSeeker;
 use App\UseCase\RegisterJobSeeker;
 use Assert\LazyAssertionException;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Class RegisterJobSeekerTest
@@ -16,7 +18,10 @@ class RegisterJobSeekerTest extends TestCase
 {
     public function testSuccessfullRegistration(): void
     {
-        $useCase = new RegisterJobSeeker(new JobSeekerRepository());
+        $userPasswordHasher = $this->createMock(UserPasswordHasher::class);
+        $userPasswordHasher->method("hashPassword")->willReturn("hash_password");
+
+        $useCase = new RegisterJobSeeker(new JobSeekerRepository($userPasswordHasher), $userPasswordHasher);
 
         $jobSeeker = new JobSeeker();
         $jobSeeker->setPlainPassword("Password123!");
@@ -33,7 +38,10 @@ class RegisterJobSeekerTest extends TestCase
      */
     public function testBadJobSeeker(JobSeeker $jobSeeker): void
     {
-        $useCase = new RegisterJobSeeker(new JobSeekerRepository());
+        $userPasswordHasher = $this->createMock(UserPasswordHasher::class);
+        $userPasswordHasher->method("hashPassword")->willReturn("hash_password");
+
+        $useCase = new RegisterJobSeeker(new JobSeekerRepository($userPasswordHasher), $userPasswordHasher);
 
         $this->expectException(LazyAssertionException::class);
 

@@ -6,7 +6,9 @@ use App\Adapter\InMemory\Repository\RecruiterRepository;
 use App\Entity\Recruiter;
 use App\UseCase\RegisterRecruiter;
 use Behat\Behat\Context\Context;
-use PHPUnit\Framework\Assert;
+use Assert\Assertion;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class RegisterRecruiterContext implements Context
 {
@@ -24,7 +26,26 @@ class RegisterRecruiterContext implements Context
      */
     public function iNeedToRegisterToRecruitNewEmployees()
     {
-        $this->registerRecruiter = new RegisterRecruiter(new RecruiterRepository());
+        $userPasswordHasher = new class () implements UserPasswordHasherInterface
+        {
+            public function hashPassword(UserInterface $user, string $plainPassword)
+            {
+                return "hash_password";
+            }
+
+            public function isPasswordValid(UserInterface $user, string $raw)
+            {
+            }
+
+            public function needsRehash(UserInterface $user): bool
+            {
+            }
+        };
+
+        $this->registerRecruiter = new RegisterRecruiter(
+            new RecruiterRepository($userPasswordHasher),
+            $userPasswordHasher
+        );
     }
 
     /**
@@ -46,6 +67,6 @@ class RegisterRecruiterContext implements Context
      */
     public function iCanLogInWithMyNewRecuiterAccount()
     {
-        Assert::assertEquals($this->recruiter, $this->registerRecruiter->execute($this->recruiter));
+        Assertion::eq($this->recruiter, $this->registerRecruiter->execute($this->recruiter));
     }
 }

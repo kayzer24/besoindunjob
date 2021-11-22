@@ -3,28 +3,6 @@ default:
         default:
             contexts:
                 - App\Tests\Behat\DemoContext
-                - App\Features\AcceptApplicationContext
-                - App\Features\CloseApplicationContext
-                - App\Features\DeleteOfferContext
-                - App\Features\HireContext
-                - App\Features\MatchContext
-                - App\Features\PublishOfferContext
-                - App\Features\RefuseApplicationContext
-                - App\Features\RegisterJobSeekerContext
-                - App\Features\RegisterRecruiterContext
-                - App\Features\SendApplicationContext
-                - App\Features\ShowInterestContext
-                - App\Features\UpdateResumeContext
 
     extensions:
-        FriendsOfBehat\SymfonyExtension:
-            bootstrap: tests/bootstrap.php
-            kernel:
-                class: App\Kernel
-                environment: test
-                debug: ~
-#        Behatch\Extension: ~
-#        Behat\MinkExtension:
-#            sessions:
-#                default:
-#                    symfony: ~
+        FriendsOfBehat\SymfonyExtension: null

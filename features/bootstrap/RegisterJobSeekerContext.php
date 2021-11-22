@@ -6,7 +6,9 @@ use App\Adapter\InMemory\Repository\JobSeekerRepository;
 use App\Entity\JobSeeker;
 use App\UseCase\RegisterJobSeeker;
 use Behat\Behat\Context\Context;
-use PHPUnit\Framework\Assert;
+use Assert\Assertion;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class RegisterJobSeekerContext implements Context
 {
@@ -25,7 +27,25 @@ class RegisterJobSeekerContext implements Context
      */
     public function iNeedToRegisterToLookUpForANewJob()
     {
-        $this->registerJobSeeker = new RegisterJobSeeker(new JobSeekerRepository());
+        $userPasswordHasher = new class () implements UserPasswordHasherInterface
+        {
+            public function hashPassword(UserInterface $user, string $plainPassword)
+            {
+                return "hash_password";
+            }
+
+            public function isPasswordValid(UserInterface $user, string $raw)
+            {
+            }
+
+            public function needsRehash(UserInterface $user): bool
+            {
+            }
+        };
+        $this->registerJobSeeker = new RegisterJobSeeker(
+            new JobSeekerRepository($userPasswordHasher),
+            $userPasswordHasher
+        );
     }
 
     /**
@@ -45,6 +65,6 @@ class RegisterJobSeekerContext implements Context
      */
     public function iCanLogInWithMyNewAccount()
     {
-        Assert::assertEquals($this->jobSeeker, $this->registerJobSeeker->execute($this->jobSeeker));
+        Assertion::eq($this->jobSeeker, $this->registerJobSeeker->execute($this->jobSeeker));
     }
 }

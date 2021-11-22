@@ -7,6 +7,7 @@ use App\Entity\Recruiter;
 use App\UseCase\RegisterRecruiter;
 use Assert\LazyAssertionException;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 
 /**
  * Class RegisterRecruiterTest
@@ -16,7 +17,10 @@ class RegisterRecruiterTest extends TestCase
 {
     public function testSuccessfullRegistration(): void
     {
-        $useCase = new RegisterRecruiter(new RecruiterRepository());
+        $userPasswordHasher = $this->createMock(UserPasswordHasher::class);
+        $userPasswordHasher->method("hashPassword")->willReturn("hash_password");
+
+        $useCase = new RegisterRecruiter(new RecruiterRepository($userPasswordHasher), $userPasswordHasher);
 
         $recruiter = new Recruiter();
         $recruiter->setPlainPassword("Password123!");
@@ -34,7 +38,10 @@ class RegisterRecruiterTest extends TestCase
      */
     public function testBadRecruiter(Recruiter $recruiter): void
     {
-        $useCase = new RegisterRecruiter(new RecruiterRepository());
+        $userPasswordHasher = $this->createMock(UserPasswordHasher::class);
+        $userPasswordHasher->method("hashPassword")->willReturn("hash_password");
+
+        $useCase = new RegisterRecruiter(new RecruiterRepository($userPasswordHasher), $userPasswordHasher);
 
         $this->expectException(LazyAssertionException::class);
 
