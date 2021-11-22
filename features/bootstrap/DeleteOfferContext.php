@@ -11,7 +11,6 @@ class DeleteOfferContext implements Context
      */
     public function iWantToDeleteAnOffer()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ class DeleteOfferContext implements Context
      */
     public function iSelectTheOfferToDeleteIt()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ class DeleteOfferContext implements Context
      */
     public function jobSeekersWillNoLongerBeAbleToApplyForTheJobOffer()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }

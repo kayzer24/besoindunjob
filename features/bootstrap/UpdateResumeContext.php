@@ -11,7 +11,6 @@ class UpdateResumeContext implements Context
      */
     public function iWantToUpdateMyResume()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ class UpdateResumeContext implements Context
      */
     public function iFillTheResume()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ class UpdateResumeContext implements Context
      */
     public function iLlHaveBetterVisibilityWithRecruiters()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }

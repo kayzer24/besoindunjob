@@ -11,7 +11,6 @@ class RefuseApplicationContext implements Context
      */
     public function iWantToRefuseAnApplication()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ class RefuseApplicationContext implements Context
      */
     public function iSendTheReasonOfRefusal()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ class RefuseApplicationContext implements Context
      */
     public function theJobSeekerIsAwareOfOurDecision()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }

@@ -11,7 +11,6 @@ class AcceptApplicationContext implements Context
      */
     public function iWantToAcceptAnApplication()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ class AcceptApplicationContext implements Context
      */
     public function iSendANewMessageToExplainTheNextStep()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ class AcceptApplicationContext implements Context
      */
     public function theJobSeekerIsAwareOfOurDecisionAndWeCanMaybeMeetTheJobSeeker()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }

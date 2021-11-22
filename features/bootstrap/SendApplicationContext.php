@@ -11,7 +11,6 @@ class SendApplicationContext implements Context
      */
     public function iWantToSendMyApplicationToAJob()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ class SendApplicationContext implements Context
      */
     public function iWriteAndSendMyApplication()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ class SendApplicationContext implements Context
      */
     public function myApplicationIsOnPendingAndRecruiterCanProcessIt()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }

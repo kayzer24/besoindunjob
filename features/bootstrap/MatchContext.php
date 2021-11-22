@@ -11,7 +11,6 @@ class MatchContext implements Context
      */
     public function iWantToLookForJobSeekersThatMatchWithMyJobOffer()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ class MatchContext implements Context
      */
     public function iSelectAnOffer()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ class MatchContext implements Context
      */
     public function iCanSeeTheListOfJobSeekersWithTheBestCompatibilityWithMyJobOffer()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }

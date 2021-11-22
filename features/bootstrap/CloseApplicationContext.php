@@ -11,7 +11,6 @@ class CloseApplicationContext implements Context
      */
     public function iWantToCloseAnApplication()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -19,7 +18,6 @@ class CloseApplicationContext implements Context
      */
     public function iCloseIt()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 
     /**
@@ -27,6 +25,5 @@ class CloseApplicationContext implements Context
      */
     public function theRecruitmentProcessIsStopped()
     {
-        throw new \Behat\Behat\Tester\Exception\PendingException();
     }
 }
