@@ -16,6 +16,6 @@ class JobSeekerRegistrationType extends RegistrationType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault("class", JobSeeker::class);
+        $resolver->setDefault("data_class", JobSeeker::class);
     }
 }

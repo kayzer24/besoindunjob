@@ -29,6 +29,6 @@ class RecruiterRegistrationType extends RegistrationType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault("class", Recruiter::class);
+        $resolver->setDefault("data_class", Recruiter::class);
     }
 }

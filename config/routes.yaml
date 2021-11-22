@@ -1,10 +1,14 @@
 register_job_seeker:
-    path: /job-seeker-register
+    path: /job-seeker/register
     controller: App\Controller\RegisterJobSeekerController
 
 register_recruiter:
-    path: /recruiter-register
+    path: /recruiter/register
     controller: App\Controller\RegisterRecruiterController
+
+publish_offer:
+    path: /publish-offer
+    controller: App\Controller\PublishOfferController
 
 index:
     path: /
